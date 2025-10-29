@@ -24,7 +24,7 @@ else
 fi
 
 # --- Run Postgres ---
-cd "${CURRENT_DIR}/../binaries/postgres"
+cd "${CURRENT_DIR}/../../binaries/postgres"
 log INFO "Starting Postgres..."
 sudo docker-compose -f docker-compose.yml --compatibility up --build -d
 
@@ -67,7 +67,7 @@ fi
 log INFO "Database and user setup complete."
 
 # --- Run Cold Email Backend ---
-cd "${CURRENT_DIR}/../cold-email/cold-email-backend"
+cd "${CURRENT_DIR}/../../cold-email/cold-email-backend"
 log INFO "Starting cold-email-backend..."
 sudo docker-compose -f docker-compose.yml --compatibility up --build -d
 
