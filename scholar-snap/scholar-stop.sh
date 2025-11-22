@@ -39,4 +39,14 @@ else
 fi
 
 
+# --- Stop Postgres ---
+cd "${CURRENT_DIR}/../../binaries/postgres"
+if [ -f docker-compose.yml ]; then
+  log INFO "Stopping Postgres containers..."
+  sudo docker-compose -f docker-compose.yml down
+else
+  log WARN "KPostgres docker-compose.yml not found. Skipping."
+fi
+
+
 log INFO "All services stopped and cleaned up successfully."
