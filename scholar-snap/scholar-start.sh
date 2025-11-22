@@ -68,6 +68,11 @@ else
   log INFO "Database '$NEW_DB_NAME' already exists. Skipping creation."
 fi
 
+# --- Ensuring vector extension exist --- 
+log INFO "Ensuring 'vector' extension exists in database '$NEW_DB_NAME'..."
+sudo docker exec -i "$POSTGRES_CONTAINER" psql -U "$POSTGRES_USER" -d "$NEW_DB_NAME" -c "CREATE EXTENSION IF NOT EXISTS vector;"
+log INFO "'vector' extension is ready."
+
 log INFO "Database and user setup complete."
 
 # --- Run Kafka ---
